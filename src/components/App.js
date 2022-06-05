@@ -8,7 +8,7 @@ import {Register} from "./register/Register";
 function App() {
 
     const [user, setUser] = useState({
-        email: '',
+        text: '',
         password: '',
         correct: null,
         showPass: false,
@@ -17,7 +17,7 @@ function App() {
 
     const handleForm = e => {
         e.preventDefault();
-        user.email === data.email && user.password === data.password ? setUser(user => ({
+        user.text === data.email && user.password === data.password ? setUser(user => ({
             ...user,
             correct: true
         })) : setUser(user => ({...user, correct: false}))
@@ -43,16 +43,10 @@ function App() {
     const handleChange = (e) => {
         const type = e.target.type;
 
-        if(type === 'text') {
+        if(type) {
             setUser(user => ({
                 ...user,
-                email: e.target.value,
-                correct: null
-            }))
-        } else if(type === 'password') {
-            setUser(user => ({
-                ...user,
-                password: e.target.value,
+                [type]: e.target.value,
                 correct: null
             }))
         }
