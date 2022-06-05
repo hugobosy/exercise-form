@@ -1,10 +1,11 @@
 import React from 'react';
+import './Box.css';
 
 export const Box = props => {
 
     return (
-        <div className="Box">
-            
+        <div className={props.classStyle}>
+            <p>{props.message}</p>
         </div>
     )
 }

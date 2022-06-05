@@ -1,0 +1,9 @@
+.correct {
+    background-color: #6def50;
+    color: white;
+}
+
+.incorrect {
+    background-color: #de6969;
+    color: white;
+}
