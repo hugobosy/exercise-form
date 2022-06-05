@@ -8,8 +8,11 @@ import {Register} from "./register/Register";
 function App() {
 
     const [user, setUser] = useState({
-        text: '',
+        name: '',
+        surname: '',
+        email: '',
         password: '',
+        confirmPassword: '',
         correct: null,
         showPass: false,
         showRegister: false,
@@ -17,7 +20,7 @@ function App() {
 
     const handleForm = e => {
         e.preventDefault();
-        user.text === data.email && user.password === data.password ? setUser(user => ({
+        user.email === data.email && user.password === data.password ? setUser(user => ({
             ...user,
             correct: true
         })) : setUser(user => ({...user, correct: false}))
@@ -36,12 +39,18 @@ function App() {
         setUser(user => ({
             ...user,
             showRegister: reg,
+            name: '',
+            surname: '',
+            email: '',
+            password: '',
+            confirmPassword: '',
             correct: null,
+            showPass: false,
         }))
     }
 
     const handleChange = (e) => {
-        const type = e.target.type;
+        const type = e.target.name;
 
         if(type) {
             setUser(user => ({
@@ -58,7 +67,7 @@ function App() {
             <div className="App">
                 <button onClick={() => handleLoginRegister(false)}>Logowanie</button>
                 <button onClick={() => handleLoginRegister(true)}>Rejestracja</button>
-                {user.showRegister ? <Register/> : <Login user={user} submit={handleForm} showPass={showPassword} change={handleChange}/>}
+                {user.showRegister ? <Register change={handleChange} newUser={user}/> : <Login user={user} submit={handleForm} showPass={showPassword} change={handleChange}/>}
             </div>
             <div className="box">
                 {user.correct === null ? null : user.correct ?

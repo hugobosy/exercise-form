@@ -7,11 +7,11 @@ export const Login = props => {
             <h1>Logowanie</h1>
             <label>
                 Email:
-                <input type="text" value={user.text} onChange={props.change}/>
+                <input type="text" name="email" value={user.email} onChange={props.change}/>
             </label>
             <label>
                 Password:
-                <input type={user.showPass ? 'text' : 'password'} value={user.password}
+                <input type={user.showPass ? 'text' : 'password'} name="password" value={user.password}
                        onChange={props.change}/>
             </label>
             <button type="submit">Login</button>
