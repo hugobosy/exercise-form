@@ -1,9 +1,14 @@
+input {
+    transition: .4s;
+}
 .correct {
     background-color: #6def50;
+    border: 1px solid darkgreen;
     color: white;
 }
 
 .incorrect {
     background-color: #de6969;
+    border: 1px solid darkred;
     color: white;
 }

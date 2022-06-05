@@ -9,31 +9,36 @@ export const Form = props => {
             <p>
                 <label>
                     <span>Name: </span>
-                    <input type="text" value={user.name} name="name" onChange={props.change} className={user.name.length > 3 ? 'correct' : 'incorrect'}/>
+                    <input type="text" value={user.name} name="name" onChange={props.change}
+                           className={user.name.length === 0 ? null : user.name.length > 3 ? 'correct' : 'incorrect'}/>
                 </label>
             </p>
             <p>
                 <label>
                     <span>Surname: </span>
-                    <input type="text" value={user.surname} name="surname" onChange={props.change} className={user.surname.length > 3 ? 'correct' : 'incorrect'}/>
+                    <input type="text" value={user.surname} name="surname" onChange={props.change}
+                           className={user.surname.length === 0 ? null : user.surname.length > 3 ? 'correct' : 'incorrect'}/>
                 </label>
             </p>
             <p>
                 <label>
                     <span>Email: </span>
-                    <input type="text" value={user.email} name="email" onChange={props.change} className={user.email.indexOf('@') !== -1 ? 'correct' : 'incorrect'}/>
+                    <input type="text" value={user.email} name="email" onChange={props.change}
+                           className={user.email.length === 0 ? null : user.email.indexOf('@') !== -1 ? 'correct' : 'incorrect'}/>
                 </label>
             </p>
             <p>
                 <label>
                     <span>Password: </span>
-                    <input type="password" value={user.password} name="password" onChange={props.change} className={user.password.length >= 8 ? 'correct' : 'incorrect'}/>
+                    <input type="password" value={user.password} name="password" onChange={props.change}
+                           className={user.password.length === 0 ? null : user.password.length >= 8 ? 'correct' : 'incorrect'}/>
                 </label>
             </p>
             <p>
                 <label>
                     <span>Confirm password: </span>
-                    <input type="password" value={user.confirmPassword} name="confirmPassword" onChange={props.change} className={user.password === user.confirmPassword ? 'correct' : 'incorrect'}/>
+                    <input type="password" value={user.confirmPassword} name="confirmPassword" onChange={props.change}
+                           className={user.confirmPassword.length === 0 ? null : user.password === user.confirmPassword ? 'correct' : 'incorrect'}/>
                 </label>
             </p>
             <button type="submit">Register</button>
