@@ -2,6 +2,7 @@ import './App.css';
 import {useState} from "react";
 import {Box} from "./box/Box";
 import {data} from "../data/data";
+import {Login} from "./login/Login";
 
 function App() {
 
@@ -10,6 +11,7 @@ function App() {
         password: '',
         correct: null,
         showPass: false,
+        showRegister: false,
     })
 
     const handleForm = e => {
@@ -29,35 +31,45 @@ function App() {
 
     }
 
+    const handleLoginRegister = (reg) => {
+        setUser(user => ({
+            ...user,
+            showRegister: reg,
+            correct: null,
+        }))
+    }
+
+    const handleChange = (e) => {
+        const type = e.target.type;
+
+        if(type === 'text') {
+            setUser(user => ({
+                ...user,
+                email: e.target.value,
+                correct: null
+            }))
+        } else if(type === 'password') {
+            setUser(user => ({
+                ...user,
+                password: e.target.value,
+                correct: null
+            }))
+        }
+    }
+
     return (
         <>
-            <div className="App">
-                <form onSubmit={handleForm}>
-                    <label>
-                        Email:
-                        <input type="text" value={user.email} onChange={e => setUser(user => ({
-                            ...user,
-                            email: e.target.value,
-                            correct: null,
-                        }))}/>
-                    </label>
-                    <label>
-                        Password:
-                        <input type={user.showPass ? 'text' : 'password'} value={user.password} onChange={e => setUser(user => ({
-                            ...user,
-                            password: e.target.value,
-                            correct: null,
-                        }))}/>
-                    </label>
-                    <button type="submit">Login</button>
 
-                </form>
-                <button onClick={showPassword}>{user.showPass ? "Hidden password" : "Show password"}</button>
+            <div className="App">
+                <button onClick={() => handleLoginRegister(false)}>Logowanie</button>
+                <button onClick={() => handleLoginRegister(true)}>Rejestracja</button>
+                {user.showRegister ? <h1>Rejestracja</h1> : <Login user={user} submit={handleForm} showPass={showPassword} change={handleChange}/>}
             </div>
             <div className="box">
                 {user.correct === null ? null : user.correct ?
                     <Box message="Zalogowano poprawnie" classStyle="correct"/> :
                     <Box message="Nieprawidłowe dane logowania" classStyle="incorrect"/>}
+
             </div>
 
         </>
