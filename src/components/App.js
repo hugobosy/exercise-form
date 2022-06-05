@@ -3,6 +3,7 @@ import {useState} from "react";
 import {Box} from "./box/Box";
 import {data} from "../data/data";
 import {Login} from "./login/Login";
+import {Register} from "./register/Register";
 
 function App() {
 
@@ -63,7 +64,7 @@ function App() {
             <div className="App">
                 <button onClick={() => handleLoginRegister(false)}>Logowanie</button>
                 <button onClick={() => handleLoginRegister(true)}>Rejestracja</button>
-                {user.showRegister ? <h1>Rejestracja</h1> : <Login user={user} submit={handleForm} showPass={showPassword} change={handleChange}/>}
+                {user.showRegister ? <Register/> : <Login user={user} submit={handleForm} showPass={showPassword} change={handleChange}/>}
             </div>
             <div className="box">
                 {user.correct === null ? null : user.correct ?

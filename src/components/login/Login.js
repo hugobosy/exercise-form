@@ -4,6 +4,7 @@ export const Login = props => {
     const {user, showPass, submit} = props;
     return (
         <form onSubmit={submit}>
+            <h1>Logowanie</h1>
             <label>
                 Email:
                 <input type="text" value={user.email} onChange={props.change}/>
