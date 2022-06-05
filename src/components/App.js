@@ -20,17 +20,14 @@ function App() {
         })) : setUser(user => ({...user, correct: false}))
     }
 
-    // const showPassword = () => {
-    //     setUser(user => ({
-    //         ...user,
-    //         showPass: true
-    //     }))
-    //
-    //     setTimeout(setUser(user => ({
-    //         ...user,
-    //         showPass: false,
-    //     })), 2000)
-    // }
+    const showPassword = () => {
+        const pass = user.showPass;
+        setUser(user => ({
+            ...user,
+            showPass: !pass
+        }));
+
+    }
 
     return (
         <>
@@ -46,15 +43,16 @@ function App() {
                     </label>
                     <label>
                         Password:
-                        <input type="password" value={user.password} onChange={e => setUser(user => ({
+                        <input type={user.showPass ? 'text' : 'password'} value={user.password} onChange={e => setUser(user => ({
                             ...user,
                             password: e.target.value,
                             correct: null,
                         }))}/>
                     </label>
                     <button type="submit">Login</button>
-                    {/*<button onClick={showPassword}>Show password</button>*/}
+
                 </form>
+                <button onClick={showPassword}>{user.showPass ? "Hidden password" : "Show password"}</button>
             </div>
             <div className="box">
                 {user.correct === null ? null : user.correct ?
