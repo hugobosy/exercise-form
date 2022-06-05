@@ -10,14 +10,14 @@ export const Form = props => {
                 <label>
                     <span>Name: </span>
                     <input type="text" value={user.name} name="name" onChange={props.change}
-                           className={user.name.length === 0 ? null : user.name.length > 3 ? 'correct' : 'incorrect'}/>
+                           className={user.name.length === 0 ? null : user.name.length >= 3 ? 'correct' : 'incorrect'}/>
                 </label>
             </p>
             <p>
                 <label>
                     <span>Surname: </span>
                     <input type="text" value={user.surname} name="surname" onChange={props.change}
-                           className={user.surname.length === 0 ? null : user.surname.length > 3 ? 'correct' : 'incorrect'}/>
+                           className={user.surname.length === 0 ? null : user.surname.length >= 3 ? 'correct' : 'incorrect'}/>
                 </label>
             </p>
             <p>
